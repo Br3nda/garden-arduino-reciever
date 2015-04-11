@@ -1,0 +1,11 @@
+
+This is the reciever. It collates info from possibly many plants, with attached arduinos running the transmitter.
+
+see also:
+https://github.com/Br3nda/garden-arduino-transmitter 
+
+Requires:
+========
+
+VirtualWire from https://www.pjrc.com/teensy/td_libs_VirtualWire.html
+
