@@ -38,20 +38,24 @@ void loop()
     uint8_t buf[VW_MAX_MESSAGE_LEN];
     uint8_t buflen = VW_MAX_MESSAGE_LEN;
 
+    String message;
     if (vw_get_message(buf, &buflen)) // Non-blocking
     {
 	int i;
-
+        //example 
+        // Got: 1 6B 
+        // 1 = the plant_number
+        // 6B = moisture_level
+         
         digitalWrite(led_pin, HIGH); // Flash a light to show received good message
 	// Message with a good checksum received, dump it.
-	Serial.print("Got: ");
-	
-	for (i = 0; i < buflen; i++)
-	{
-	    Serial.print(buf[i], HEX);
-	    Serial.print(' ');
-	}
-	Serial.println();
+
+        int plant_number = buf[0];
+        int moisture_level = buf[1];
+        
+        debugMessage("Plant number ", plant_number);
+        debugMessage("Moisture Level ", moisture_level);
+
         digitalWrite(led_pin, LOW);
     }
 }
