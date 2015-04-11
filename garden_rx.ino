@@ -1,7 +1,6 @@
 #include <VirtualWire.h>
 
-const int led_pin = 13;
-const int transmit_pin = 12;
+const int led_pin = 13;  //the led to light up, to indicate we are recieving a message
 const int receive_pin = 11;
 const int transmit_en_pin = 3;
 
@@ -21,7 +20,6 @@ void setup()
     Serial.println("setup");
 
     // Initialise the IO and ISR
-    vw_set_tx_pin(transmit_pin);
     vw_set_rx_pin(receive_pin);
     vw_set_ptt_pin(transmit_en_pin);
     vw_set_ptt_inverted(true); // Required for DR3100
@@ -41,9 +39,8 @@ void loop()
     String message;
     if (vw_get_message(buf, &buflen)) // Non-blocking
     {
-	int i;
         //example 
-        // Got: 1 6B 
+        // 1 6B 
         // 1 = the plant_number
         // 6B = moisture_level
          
